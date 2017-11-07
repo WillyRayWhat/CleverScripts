@@ -17,8 +17,8 @@ GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(16, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 button_two_clicks = 0
-default_warm = 153
-default_cool = 500
+default_warm = 500
+default_cool = 153
 
 def set_scene(scene_number):
     print('Set Scene %d' % scene_number)
@@ -34,6 +34,9 @@ def set_scene(scene_number):
     if scene_number == 3:
         b.set_group(1, 'ct', default_cool)
         b.set_group(1, 'bri', 127)
+    if scene_number == 4:
+        b.set_group(1, 'ct', default_cool)
+        b.set_group(1, 'bri', 254)
 
 
 while True:
@@ -47,7 +50,7 @@ while True:
         time.sleep(0.2)
     if input_state2 == False:
         button_two_clicks = button_two_clicks+1
-        set_scene(button_two_clicks % 4)
+        set_scene(button_two_clicks % 5)
         time.sleep(0.2)
 
 
