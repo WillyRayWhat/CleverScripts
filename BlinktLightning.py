@@ -59,7 +59,7 @@ mean_intra_strike_time = 5
 
 def flash(duration, intensity):
     clear()
-    set_brightness(intensity*intensity_factor)
+    set_brightness(intensity)
     for pix in range(0,7):
         set_pixel(pix, R,G,B)
     show()
