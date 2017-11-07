@@ -58,6 +58,11 @@ mean_intra_strike_time = 5
 
 
 def flash(duration, intensity):
+    """
+    This flashes the lights for a certain duration then shuts them off.
+    :param duration: in seconds, duration of the flash
+    :param intensity:  intensity of the flash, bounded [0,1]
+    """
     clear()
     set_brightness(intensity)
     set_all(R,G,B)
@@ -68,24 +73,44 @@ def flash(duration, intensity):
 
 
 def strike(flash_count):
+    """
+    This models a lightning strike, composed of several flashes.
+    This is where the bulk of the samples are drawn from probability distributions
+    :param flash_count: number of individual flashes composing this strike
+    """
     for i in range(0,flash_count):
-        dur=np.random.exponential(mean_flash_duration)
+        # for each flash:
+
+        # draw a sample from an exponential distribution with a given mean
+        dur = np.random.exponential(mean_flash_duration)
+
+        # Draw a sample for the amount of time before the next flash
         sleep_dur = np.random.exponential(mean_sleep_duration)
+
+        # Draw a sample for the intensity of this flash
         intensity = np.random.uniform(min_intensity, max_intensity)
-        flash(dur,intensity)
+
+        # Lights on,
+        flash(dur, intensity)
+        # lights off
         time.sleep(sleep_dur)
 
 
 def main_loop():
     while True:
-        next_strike_in = np.random.exponential(mean_intra_strike_time)
-        time.sleep(next_strike_in)
 
+        # randomly draw a number of flashes for this strike, and bound them
+        # by the min/max
         flash_count = np.random.poisson(mean_flash_count)
         flash_count = max(min_flash_count, flash_count)
         flash_count = min(max_flash_count, flash_count)
 
+        # execute the strike.
         strike(flash_count)
 
+        # now draw a intra-strike time.  How long until the next strike?
+        next_strike_in = np.random.exponential(mean_intra_strike_time)
+        time.sleep(next_strike_in)
 
+# Run it
 main_loop()
