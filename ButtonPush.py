@@ -17,14 +17,24 @@ GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(16, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 button_two_clicks = 0
+default_warm = 254
+default_cool = 127
 
 def set_scene(scene_number):
+    print('Set Scene %d' % scene_number)
     if scene_number == 0:
+        b.set_group(1, 'sat', default_warm)
         b.set_group(1, 'bri', 254)
-    if (scene_number == 1):
+    if scene_number == 1:
+        b.set_group(1, 'sat', default_warm)
         b.set_group(1, 'bri', 127)
-    if (scene_number == 2):
+    if scene_number == 2:
+        b.set_group(1, 'sat', default_warm)
         b.set_group(1, 'bri', 63)
+    if scene_number == 3:
+        b.set_group(1, 'sat', default_cool)
+        b.set_group(1, 'bri', 127)
+        set_scene(0)
 
 
 while True:
@@ -37,9 +47,8 @@ while True:
         print('Office Lights on: %s' % on)
         time.sleep(0.2)
     if input_state2 == False:
-        print('Button 2 Pressed')
         button_two_clicks = button_two_clicks+1
-        set_scene(button_two_clicks % 3)
+        set_scene(button_two_clicks % 4)
         time.sleep(0.2)
 
 
