@@ -18,5 +18,5 @@ while True:
     if input_state == False:
         print('Button Pressed')
         b.set_group(1, 'on', not b.get_group((1,'on')))
-        print('Office Lights on: %s' % b.get_gropu(1,'on'))
+        print('Office Lights on: %s' % b.get_group(1,'on'))
         time.sleep(0.2)
