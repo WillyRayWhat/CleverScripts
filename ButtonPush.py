@@ -6,8 +6,6 @@ b = Bridge('192.168.1.227')
 #b.connect()
 
 
-
-
 print(b.get_group(1))
 b.set_group(1, 'on', False)
 on = False
@@ -17,7 +15,7 @@ GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(16, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 button_two_clicks = 0
-default_warm = 500
+default_warm = 400
 default_cool = 153
 
 def set_scene(scene_number):
