@@ -1,8 +1,14 @@
 import RPi.GPIO as GPIO
 import time
+from phue import Bridge
+
+b = Bridge('192.168.1.227')
+b.connect()
+
+print(b.get_group())
+
 
 GPIO.setmode(GPIO.BCM)
-
 GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 while True:
