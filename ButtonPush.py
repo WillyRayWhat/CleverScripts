@@ -26,3 +26,4 @@ while True:
         time.sleep(0.2)
     if input_state2 == False:
         print('Button 2 Pressed')
+        time.sleep(0.2)
