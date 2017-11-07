@@ -31,7 +31,7 @@ import blinkt
 import time
 import numpy as np
 
-from blinkt import set_pixel, set_brightness, show, clear
+from blinkt import set_pixel, set_all, set_brightness, show, clear
 
 # Color of flashes. These can be modified for non-white flashes.
 R=255
@@ -60,8 +60,7 @@ mean_intra_strike_time = 5
 def flash(duration, intensity):
     clear()
     set_brightness(intensity)
-    for pix in range(0,7):
-        set_pixel(pix, R,G,B)
+    set_all(R,G,B)
     show()
     time.sleep(duration)
     clear()
