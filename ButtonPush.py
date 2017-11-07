@@ -23,16 +23,16 @@ default_cool = 500
 def set_scene(scene_number):
     print('Set Scene %d' % scene_number)
     if scene_number == 0:
-        b.set_group(1, 'sat', default_warm)
+        b.set_group(1, 'ct', default_warm)
         b.set_group(1, 'bri', 254)
     if scene_number == 1:
-        b.set_group(1, 'sat', default_warm)
+        b.set_group(1, 'ct', default_warm)
         b.set_group(1, 'bri', 127)
     if scene_number == 2:
-        b.set_group(1, 'sat', default_warm)
+        b.set_group(1, 'ct', default_warm)
         b.set_group(1, 'bri', 63)
     if scene_number == 3:
-        b.set_group(1, 'sat', default_cool)
+        b.set_group(1, 'ct', default_cool)
         b.set_group(1, 'bri', 127)
 
 
