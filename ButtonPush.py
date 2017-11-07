@@ -3,9 +3,10 @@ import time
 from phue import Bridge
 
 b = Bridge('192.168.1.227')
-b.connect()
+#b.connect()
 
-print(b.get_group())
+
+print(b.get_group(1))
 
 
 GPIO.setmode(GPIO.BCM)
