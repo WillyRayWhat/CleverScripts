@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 import time
 from phue import Bridge
 
-b = Bridge('192.168.1.227')
+b = Bridge('<ip of bridge here>')
 #b.connect()
 
 
