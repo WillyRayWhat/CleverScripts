@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 
 import serial
-from phue import Bridge
+import phue as hue
 
 
-b = Bridge('192.168.1.227')
+b = hue.Bridge('192.168.1.227')
 b.connect()
 ser = serial.Serial('/dev/ttyACM0', 9600)
 
