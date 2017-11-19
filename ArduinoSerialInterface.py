@@ -21,8 +21,9 @@ while True:
     if input:
         print(input)
         values = input.split(',')
-        for item in kitchen_lights.__iter__():
-            bright = item.brightness
-            item.transitiontime = 0
-            item.brightness = int(values[1])
+        if values[1].isdigit():
+            for item in kitchen_lights.__iter__():
+                bright = item.brightness
+                item.transitiontime = 0
+                item.brightness = int(values[1])
 
